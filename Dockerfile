@@ -11,7 +11,7 @@ RUN wget -q -O /tmp/libpng12.deb http://ftp.tr.debian.org/debian/pool/main/libp/
 RUN curl --silent --show-error --location --fail --retry 3 --output /etc/ssl/certs/java/cacerts \ 
     https://circle-downloads.s3.amazonaws.com/circleci-images/cache/linux-amd64/openjdk-9-slim-cacerts
 
-RUN curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash - \
+RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - \
     apt-get install -y nodejs
 
 RUN curl -L -o /tmp/docker-17.03.0-ce.tgz https://get.docker.com/builds/Linux/x86_64/docker-17.03.0-ce.tgz && \
