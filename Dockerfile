@@ -1,4 +1,4 @@
-FROM openjdk:13-jdk
+FROM openjdk:14-jdk
 
 RUN yum update -y && \
   yum install -y multiarch-support libxml2-utils build-essential git curl tar gzip libjpeg-dev imagemagick ttf-dejavu jpegoptim grep libpng-dev && \
