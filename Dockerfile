@@ -4,7 +4,7 @@ RUN yum update -y && \
   yum install -y multiarch-support libxml2-utils build-essential git curl tar gzip libjpeg-dev imagemagick ttf-dejavu jpegoptim grep libpng-dev && \
   mkdir -p ~/.m2
 
-RUN curl -sL https://rpm.nodesource.com/setup_9.x | bash - 
+RUN curl -sL https://rpm.nodesource.com/setup_14.x | bash - 
 
 RUN yum install -y nodejs
 
