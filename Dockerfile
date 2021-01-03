@@ -8,6 +8,7 @@ RUN apk update && \
                        nodejs \
                        npm \
                        coreutils \
+                       openssh \
                        python3 \
                        py3-pip \
                        groff \
