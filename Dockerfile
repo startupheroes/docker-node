@@ -7,6 +7,7 @@ RUN apk update && \
                        git \
                        nodejs \
                        npm \
+                       coreutils \
                        python3 \
                        py3-pip \
                        groff \
