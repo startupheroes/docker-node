@@ -4,6 +4,7 @@ RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswit
 
 RUN apk update && \
     apk add --no-cache docker-cli \
+                       git \
                        nodejs \
                        npm \
                        python3 \
