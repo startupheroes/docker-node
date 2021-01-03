@@ -1,12 +1,21 @@
-FROM openjdk:14-jdk
+FROM openjdk:15-jdk-alpine
 
-RUN yum update -y && \
-  yum install -y multiarch-support libxml2-utils build-essential git curl tar gzip libjpeg-dev imagemagick ttf-dejavu jpegoptim grep libpng-dev && \
-  mkdir -p ~/.m2
+RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
 
-RUN curl -sL https://rpm.nodesource.com/setup_14.x | bash - 
-
-RUN yum install -y nodejs
-
-RUN curl -L -o /tmp/docker-17.03.0-ce.tgz https://get.docker.com/builds/Linux/x86_64/docker-17.03.0-ce.tgz && \
-  tar -xz -C /tmp -f /tmp/docker-17.03.0-ce.tgz && mv /tmp/docker/* /usr/bin
+RUN apk update && \
+    apk add --no-cache docker-cli \
+                       nodejs \
+                       npm \
+                       python3 \
+                       py3-pip \
+                       groff \
+                       gcompat \
+                       tzdata \
+                       imagemagick \
+                       ttf-dejavu \
+                       gettext \
+                       curl && \
+    pip install --upgrade awscli==1.18.51  && \
+    cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
+    echo "Europe/Moscow" > /etc/timezone && \
+    apk --purge del tzdata py-pip
