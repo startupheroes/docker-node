@@ -1,4 +1,4 @@
-FROM openjdk:15-jdk-alpine
+FROM adoptopenjdk/openjdk15:alpine-slim
 
 RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
 
@@ -12,7 +12,6 @@ RUN apk update && \
                        python3 \
                        py3-pip \
                        groff \
-                       gcompat \
                        tzdata \
                        imagemagick \
                        ttf-dejavu \
