@@ -1,26 +1,29 @@
-FROM openjdk:15-jdk-alpine
+FROM openjdk:15-jdk-slim
 
 RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
 
-RUN  mkdir -p /opt/ortools && wget -qO-  https://github.com/google/or-tools/releases/download/v8.1/or-tools_alpine-edge_v8.1.8487.tar.gz | tar xvz -C /opt/ortools/ --strip-components=1
-
-RUN apk update && \
-    apk add --no-cache docker-cli \
+RUN apt-get update && \
+    apt-get install -y curl \
+                       apt-transport-https \
+                       ca-certificates \
+                       gnupg-agent \
+                       software-properties-common \
                        git \
                        nodejs \
                        npm \
                        coreutils \
-                       openssh \
                        python3 \
-                       py3-pip \
+                       python3-pip \
                        groff \
-                       gcompat \
+                       jpegoptim \
+		       libjpeg-dev \
+		       build-essential \
                        tzdata \
                        imagemagick \
                        ttf-dejavu \
-                       gettext \
-                       curl && \
-    pip install --upgrade awscli==1.18.51  && \
+                       gettext && \
+    pip3 install --upgrade awscli==1.18.51  && \
     cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
-    echo "Europe/Moscow" > /etc/timezone && \
-    apk --purge del tzdata py-pip
+    echo "Europe/Moscow" > /etc/timezone
+
+RUN  mkdir -p /opt/ortools && curl -sL https://github.com/google/or-tools/releases/download/v8.1/or-tools_ubuntu-20.10_v8.1.8487.tar.gz | tar xvz -C /opt/ortools/ --strip-components=1
