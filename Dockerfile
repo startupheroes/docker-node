@@ -26,4 +26,4 @@ RUN apt-get update && \
     cp /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
     echo "Europe/Moscow" > /etc/timezone
 
-RUN  mkdir -p /opt/ortools && curl -sL https://github.com/google/or-tools/releases/download/v8.1/or-tools_ubuntu-20.10_v8.1.8487.tar.gz | tar xvz -C /opt/ortools/ --strip-components=1
+RUN  mkdir -p /opt/ortools && curl -sL https://github.com/google/or-tools/releases/download/v7.5/or-tools_debian-10_v7.5.7466.tar.gz | tar xvz -C /opt/ortools/ --strip-components=1
