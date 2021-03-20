@@ -1,4 +1,4 @@
-FROM openjdk:15-jdk-slim
+FROM openjdk:16-jdk-slim
 
 RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
 
